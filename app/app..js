@@ -6,7 +6,7 @@ export * as mod from './mod/mod..js'
 export * as utils from './utils/utils..js'
 
 // Creating tables in the database
-app.utils.pg._file(path.join(path.resolve(), 'app', '- file', 'wbData..sql'))
+await app.utils.pg._file(path.join(path.resolve(), 'app', '- file', 'wbData..sql'))
 
 
 const { utils: { date }, mod: { wb, googleSheet } } = app
