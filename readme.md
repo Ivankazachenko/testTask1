@@ -2,7 +2,7 @@
 
 Запуск  приложения:
 ```bash
-docker-compose --env-file example.env up -d --build
+docker-compose --env-file example.env up
 ```
 с библиотекой knex.js я не работал, освоить ее сложности не вижу но нужно некоторое время.
 
