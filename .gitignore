@@ -2,4 +2,4 @@ node_modules
 .local
 .env
 dist
-example.env
+secret.env
