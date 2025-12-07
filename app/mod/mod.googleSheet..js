@@ -1,6 +1,6 @@
 import { config, utils } from '#app..js'
 
-import { GoogleSpreadsheet } from 'google-spreadsheet';
+import { GoogleSpreadsheet } from 'google-spreadsheet'
 
 const { sheetId, sheetName } = config.googleSheet
 const { knex } = utils.knex
