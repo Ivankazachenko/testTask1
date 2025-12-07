@@ -64,6 +64,8 @@ services:
       GOOGLE_SHEET_NAME: ${GOOGLE_SHEET_NAME}
       GOOGLE_SHEET_ID: ${GOOGLE_SHEET_ID}
 
+      NODE_ENV: ${NODE_ENV}
+
     ports:
       - ${APP_PORT}:${APP_PORT}
 

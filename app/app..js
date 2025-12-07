@@ -1,12 +1,10 @@
+import './app.const..js'
+
 import * as app from './app..js'
-import path from 'path'
 
 export * as config from './config/config..js'
-export * as mod from './mod/mod..js'
 export * as utils from './utils/utils..js'
-
-// Creating tables in the database
-await app.utils.pg._file(path.join(path.resolve(), 'app', '- file', 'wbData..sql'))
+export * as mod from './mod/mod..js'
 
 
 const { utils: { date }, mod: { wb, googleSheet } } = app

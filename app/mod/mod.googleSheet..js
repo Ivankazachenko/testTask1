@@ -3,15 +3,12 @@ import { config, utils } from '#app..js'
 import { GoogleSpreadsheet } from 'google-spreadsheet';
 
 const { sheetId, sheetName } = config.googleSheet
+const { knex } = utils.knex
 
 export const run = async (date) => {
-
-  const data = await utils.pg.join(
-    utils.pg.str.get('wbDelivery', { date }, { orderBy: { warehouseId: true } }),
-    utils.pg.str.get('wbWarehouse', ''), {
-    left: 'l.warehouseId = r.warehouseId',
-    select: 'l.*, r.warehouseName, r.geoName',
-  })
+  const data = await knex('wbDelivery').where('date', '=', date).orderBy('boxDeliveryCoefExpr', 'asc')
+    .join('wbWarehouse', 'wbDelivery.warehouseId', 'wbWarehouse.warehouseId')
+    .select('wbDelivery.*', 'wbWarehouse.warehouseName', 'wbWarehouse.geoName')
 
   const sheetIdArr = Array.isArray(sheetId) ? sheetId : [sheetId]
   for (const id of sheetIdArr) {
@@ -29,14 +26,9 @@ const setSheet = async ({ sheetId, data }) => {
     sheet = await doc.addSheet({ title: sheetName });
   }
 
-  // console.log(doc.title, sheet.title)
-
-  // await sheet.clear()
-  // await sheet.setHeaderRow(Object.keys(data[0]))
 
   await sheet.clearRows()
   await sheet.addRows(data)
-
 }
 
 
