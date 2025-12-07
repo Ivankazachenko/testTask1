@@ -1,5 +1,3 @@
-import './app.const..js'
-
 import * as app from './app..js'
 
 export * as config from './config/config..js'
